@@ -33,6 +33,10 @@ spec:
                     matchLabels:
                       app: mariadb
                   ingress:
+                  - from:
+                    - namespaceSelector:
+                        matchLabels:
+                          project: client
                   - ports:
                     - protocol: TCP
                       port: 3306
