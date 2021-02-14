@@ -47,3 +47,17 @@ spec:
                   conditions:
                     - message: 'All resources encrypted: secrets, configmaps'
                       reason: EncryptionCompleted
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: etcdencryption-placement-binding
+  namespace: rhacm-policies
+placementRef:
+  name: dev-clusters
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: policy-etcdencryption 
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io

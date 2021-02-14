@@ -33,3 +33,17 @@ spec:
                   name: kubeadmin
                   namespace: kube-system
                 type: Opaque
+---
+apiVersion: policy.open-cluster-management.io/v1
+kind: PlacementBinding
+metadata:
+  name: remove-kubeadmin-binding
+  namespace: rhacm-policies
+placementRef:
+  name: dev-clusters
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
+subjects:
+- name: policy-remove-kubeadmin
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io
