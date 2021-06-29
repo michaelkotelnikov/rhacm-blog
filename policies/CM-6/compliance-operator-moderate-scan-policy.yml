@@ -19,7 +19,7 @@ spec:
           remediationAction: enforce
           severity: high
           object-templates:
-            - complianceType: musthave # this template creates ScanSettingBinding:e8
+            - complianceType: musthave # this template creates ScanSettingBinding:moderate
               objectDefinition:
                 apiVersion: compliance.openshift.io/v1alpha1
                 kind: ScanSettingBinding
@@ -64,7 +64,7 @@ spec:
           remediationAction: inform
           severity: high
           object-templates:
-            - complianceType: mustnothave # this template reports the results for scan suite: e8 by looking at ComplianceCheckResult CRs
+            - complianceType: mustnothave # this template reports the results for scan suite: moderate by looking at ComplianceCheckResult CRs
               objectDefinition:
                 apiVersion: compliance.openshift.io/v1alpha1
                 kind: ComplianceCheckResult
