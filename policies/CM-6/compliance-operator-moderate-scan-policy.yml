@@ -1,7 +1,7 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: policy-e8-scan
+  name: policy-moderate-scan
   annotations:
     policy.open-cluster-management.io/standards: NIST SP 800-53
     policy.open-cluster-management.io/categories: CM Configuration Management
@@ -14,7 +14,7 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: compliance-e8-scan
+          name: compliance-moderate-scan
         spec:
           remediationAction: enforce
           severity: high
@@ -24,15 +24,15 @@ spec:
                 apiVersion: compliance.openshift.io/v1alpha1
                 kind: ScanSettingBinding
                 metadata:
-                  name: e8 
+                  name: moderate
                   namespace: openshift-compliance
                 profiles:
                 - apiGroup: compliance.openshift.io/v1alpha1
                   kind: Profile
-                  name: ocp4-e8
+                  name: ocp4-moderate
                 - apiGroup: compliance.openshift.io/v1alpha1
                   kind: Profile
-                  name: rhcos4-e8
+                  name: rhcos4-moderate
                 settingsRef:
                   apiGroup: compliance.openshift.io/v1alpha1
                   kind: ScanSetting
@@ -41,7 +41,7 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: compliance-suite-e8
+          name: compliance-suite-moderate
         spec:
           remediationAction: inform
           severity: high
@@ -51,7 +51,7 @@ spec:
                 apiVersion: compliance.openshift.io/v1alpha1
                 kind: ComplianceSuite
                 metadata:
-                  name: e8
+                  name: moderate
                   namespace: openshift-compliance
                 status:
                   phase: DONE
@@ -59,7 +59,7 @@ spec:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: compliance-suite-e8-results
+          name: compliance-suite-moderate-results
         spec:
           remediationAction: inform
           severity: high
@@ -72,17 +72,17 @@ spec:
                   namespace: openshift-compliance
                   labels:
                     compliance.openshift.io/check-status: FAIL
-                    compliance.openshift.io/suite: e8
+                    compliance.openshift.io/suite: moderate
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
-  name: policy-e8-scan-binding
+  name: policy-moderate-scan-binding
 placementRef:
-  name: placement-policy-e8-scan
+  name: dev-clusters
   kind: PlacementRule
   apiGroup: apps.open-cluster-management.io
 subjects:
-- name: policy-e8-scan
+- name: policy-moderate-scan
   kind: Policy
   apiGroup: policy.open-cluster-management.io
