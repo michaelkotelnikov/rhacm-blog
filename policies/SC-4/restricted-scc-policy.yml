@@ -9,7 +9,7 @@ metadata:
     policy.open-cluster-management.io/categories: SC System and Communications Protection
     policy.open-cluster-management.io/controls: SC-4 Information in Shared Resources
 spec:
-  remediationAction: enforce
+  remediationAction: inform
   disabled: false
   policy-templates:
     - objectDefinition:
@@ -18,7 +18,7 @@ spec:
         metadata:
           name: policy-securitycontextconstraints-restricted
         spec:
-          remediationAction: enforce # the policy-template spec.remediationAction is overridden by the preceding parameter value for spec.remediationAction.
+          remediationAction: inform # the policy-template spec.remediationAction is overridden by the preceding parameter value for spec.remediationAction.
           severity: high
           namespaceSelector:
             include: ["*"]
